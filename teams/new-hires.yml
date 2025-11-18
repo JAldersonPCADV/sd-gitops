@@ -12,15 +12,27 @@ policies:
   - path: ../lib/macos/policies/macos-device-health.policies.yml
   - path: ../lib/windows/policies/windows-device-health.policies.yml
   - path: ../lib/linux/policies/linux-device-health.policies.yml
+  - path: ../lib/macOS/policies/dns-resolvers.policies.yml
 queries:
   - path: ../lib/all/queries/collect-usb-devices.queries.yml
   - path: ../lib/all/queries/collect-failed-login-attempts.queries.yml
 agent_options:
   path: ../lib/agent-options.yml
 controls:
+  macos_updates:
+    deadline: "2025-10-31"
+    minimum_version: "26.0"
+  macos_settings:
+    custom_settings:
+      - path: ../lib/macos/configuration-profiles/disable-bluetooth-file-sharing.mobileconfig
+      - path: ../lib/macos/configuration-profiles/passcode-settings-ddm.json
+  ipados_updates:
+    deadline: "2025-12-31"
+    minimum_version: "26.0"
   scripts:
     - path: ../lib/macos/scripts/remove-zoom-artifacts.script.sh
     - path: ../lib/macos/scripts/set-timezone.script.sh
+    - path: ../lib/macOS/scripts/set-dns-cloudflare.sh
 team_settings:
   secrets:
     - secret: "$FLEET_NEW_HIRES_ENROLL_SECRET"
