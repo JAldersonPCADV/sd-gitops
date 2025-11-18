@@ -27,7 +27,6 @@ org_settings:
     enable_software_inventory: true
   org_info:
     org_name: "PCADV"
-    org_logo_url: "https://www.pcadv.org/wp-content/uploads/2021/10/PCADV-Logo-Final-Color.png"
   webhook_settings:
     activities_webhook:
       enable_activities_webhook: true
